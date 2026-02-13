@@ -21,12 +21,12 @@ st.title("🔬 Breast Cancer Classification Dashboard")
 # ==========================================
 # We explicitly list the files we generated in the training phase
 MODEL_FILES = {
-    "Logistic Regression": "logistic_regression_model.pkl",
-    "Decision Tree": "decision_tree_model.pkl",
-    "KNN": "knn_model.pkl",
-    "Naive Bayes": "naive_bayes_model.pkl",
-    "Random Forest": "random_forest_model.pkl",
-    "XGBoost": "xgboost_model.pkl"
+    "Logistic Regression": "model/logistic_regression_model.pkl",
+    "Decision Tree": "model/decision_tree_model.pkl",
+    "KNN": "model/knn_model.pkl",
+    "Naive Bayes": "model/naive_bayes_model.pkl",
+    "Random Forest": "model/random_forest_model.pkl",
+    "XGBoost": "model/xgboost_model.pkl"
 }
 
 @st.cache_resource
@@ -35,8 +35,8 @@ def load_resources():
 
     # 1. Load Scaler and Feature Names (Critical)
     try:
-        resources["scaler"] = joblib.load("scaler.pkl")
-        resources["feature_names"] = joblib.load("feature_names.pkl")
+        resources["scaler"] = joblib.load("model/scaler.pkl")
+        resources["feature_names"] = joblib.load("model/feature_names.pkl")
     except FileNotFoundError:
         st.error("❌ Critical Error: 'scaler.pkl' or 'feature_names.pkl' not found.")
         st.info("Please ensure these files are uploaded to the same directory as app.py.")
